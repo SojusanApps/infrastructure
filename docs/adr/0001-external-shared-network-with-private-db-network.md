@@ -1,0 +1,5 @@
+# External shared network, owned outside this repo; Postgres stays on a private network
+
+The reverse proxy — a separate process on the *same host* as this stack — needs to reach Keycloak; Postgres must never be reachable from outside this stack. Docker networks are host-local, so this only ever connects things co-located on this machine — it has nothing to do with consuming apps, which run on other machines and reach Keycloak purely over the real network via the proxy's public hostname. Keycloak's compose service joins two networks: `sojusan-apps-shared-network` (declared `external: true` — created and owned outside this repo, by whichever infra bootstraps first) and a private, compose-managed network shared only with `db`. `db` joins only the private network.
+
+We chose `external: true` over having this repo create the network so that network lifecycle isn't accidentally tied to this one stack's `up`/`down` — other consumers can come and go independently of whether Keycloak's compose project is currently running.

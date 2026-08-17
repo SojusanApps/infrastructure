@@ -1,0 +1,34 @@
+services:
+  db:
+    ports:
+      - "127.0.0.1:5433:5432"
+
+  keycloak:
+    command: start-dev
+    ports:
+      - "127.0.0.1:8080:8080"
+
+  smtp4dev:
+    image: rnwood/smtp4dev:3.15.0
+    container_name: sojusan-apps-smtp4dev
+    restart: unless-stopped
+    networks:
+      - db-internal
+      - shared
+    ports:
+      - "5050:80"
+      - "25:25"
+      - "143:143"
+    volumes:
+      - sojusan-apps-smtp4dev-data:/smtp4dev
+    environment:
+      - ServerOptions__HostName=smtp4dev
+
+# Locally there's no reverse proxy joining this network, so let compose create
+# it as a normal network instead of requiring it to pre-exist.
+networks:
+  shared:
+    external: false
+
+volumes:
+  sojusan-apps-smtp4dev-data:

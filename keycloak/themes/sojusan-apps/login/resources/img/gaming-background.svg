@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <!-- Game Controller -->
+    <g id="gamepad" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <rect x="-60" y="-40" width="120" height="80" rx="40" />
+      <!-- D-Pad -->
+      <path d="M -30 -10 v 20 m -10 -10 h 20" />
+      <!-- Action Buttons -->
+      <circle cx="30" cy="-15" r="4" />
+      <circle cx="45" cy="0" r="4" />
+      <circle cx="15" cy="0" r="4" />
+      <circle cx="30" cy="15" r="4" />
+      <!-- Analog Sticks -->
+      <circle cx="-15" cy="15" r="8" />
+      <circle cx="10" cy="15" r="8" />
+      <!-- Start/Select -->
+      <line x1="-10" y1="-10" x2="-2" y2="-10" />
+      <line x1="2" y1="-10" x2="10" y2="-10" />
+    </g>
+
+    <!-- Computer Mouse -->
+    <g id="mouse" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <rect x="-25" y="-45" width="50" height="90" rx="25" />
+      <path d="M -25 -5 Q 0 5 25 -5" />
+      <line x1="0" y1="-45" x2="0" y2="-5" />
+      <line x1="0" y1="-30" x2="0" y2="-15" stroke-width="4" />
+    </g>
+
+    <!-- Keyboard -->
+    <g id="keyboard" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <rect x="-80" y="-30" width="160" height="60" rx="6" />
+      <!-- Top Row Keys -->
+      <rect x="-65" y="-15" width="10" height="10" rx="2" />
+      <rect x="-45" y="-15" width="10" height="10" rx="2" />
+      <rect x="-25" y="-15" width="10" height="10" rx="2" />
+      <rect x="-5" y="-15" width="10" height="10" rx="2" />
+      <rect x="15" y="-15" width="10" height="10" rx="2" />
+      <rect x="35" y="-15" width="10" height="10" rx="2" />
+      <rect x="55" y="-15" width="10" height="10" rx="2" />
+      <!-- Bottom Row & Spacebar -->
+      <rect x="-65" y="5" width="20" height="10" rx="2" />
+      <rect x="-35" y="5" width="70" height="10" rx="2" />
+      <rect x="45" y="5" width="20" height="10" rx="2" />
+    </g>
+
+    <!-- Gaming Headset -->
+    <g id="headset" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <!-- Headband -->
+      <path d="M -30 10 A 35 35 0 0 1 30 10" />
+      <path d="M -25 10 A 30 30 0 0 1 25 10" />
+      <!-- Earcups -->
+      <rect x="-40" y="5" width="15" height="30" rx="5" />
+      <rect x="25" y="5" width="15" height="30" rx="5" />
+      <!-- Mic -->
+      <path d="M -35 25 L -45 40" />
+      <circle cx="-45" cy="40" r="3" fill="currentColor" />
+    </g>
+
+    <!-- Abstract Gaming Shapes -->
+    <g id="cross" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none">
+      <path d="M -12 -12 L 12 12 M -12 12 L 12 -12" />
+    </g>
+    <g id="circle" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none">
+      <circle cx="0" cy="0" r="12" />
+    </g>
+    <g id="square" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none">
+      <rect x="-10" y="-10" width="20" height="20" />
+    </g>
+    <g id="triangle" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none">
+      <polygon points="0,-12 12,10 -12,10" />
+    </g>
+  </defs>
+
+  <!-- Distribute elements evenly with 15% opacity for a subtle background effect -->
+  <g opacity="0.15">
+    <!-- Top Left -->
+    <use href="#headset" x="250" y="200" transform="rotate(-15 250 200) scale(1.5)" color="#8b5cf6" />
+    <use href="#circle" x="150" y="350" color="#3b82f6" />
+    <use href="#square" x="400" y="150" transform="rotate(20 400 150)" color="#ec4899" />
+    <use href="#cross" x="650" y="300" transform="rotate(45 650 300)" color="#14b8a6" />
+
+    <!-- Top Right -->
+    <use href="#keyboard" x="1600" y="250" transform="rotate(10 1600 250) scale(1.8)" color="#3b82f6" />
+    <use href="#triangle" x="1350" y="150" transform="rotate(30 1350 150)" color="#8b5cf6" />
+    <use href="#mouse" x="1450" y="400" transform="rotate(-30 1450 400) scale(1.2)" color="#14b8a6" />
+    <use href="#circle" x="1800" y="450" color="#ec4899" />
+
+    <!-- Bottom Left -->
+    <use href="#gamepad" x="350" y="850" transform="rotate(25 350 850) scale(2)" color="#ec4899" />
+    <use href="#cross" x="150" y="700" transform="rotate(15 150 700)" color="#8b5cf6" />
+    <use href="#triangle" x="550" y="950" transform="rotate(-15 550 950)" color="#3b82f6" />
+
+    <!-- Bottom Right -->
+    <use href="#headset" x="1650" y="850" transform="rotate(35 1650 850) scale(1.6)" color="#8b5cf6" />
+    <use href="#square" x="1450" y="750" transform="rotate(10 1450 750)" color="#3b82f6" />
+    <use href="#cross" x="1800" y="950" transform="rotate(40 1800 950)" color="#ec4899" />
+
+    <!-- Central Scattered / Parallax-ready empty areas -->
+    <use href="#mouse" x="960" y="180" transform="rotate(15 960 180) scale(1.5)" color="#8b5cf6" />
+    <use href="#gamepad" x="1000" y="920" transform="rotate(-10 1000 920) scale(1.3)" color="#14b8a6" />
+
+    <use href="#triangle" x="800" y="450" transform="rotate(15 800 450)" color="#ec4899" />
+    <use href="#circle" x="1150" y="380" color="#14b8a6" />
+    <use href="#square" x="900" y="680" transform="rotate(25 900 680)" color="#8b5cf6" />
+    <use href="#cross" x="1200" y="720" transform="rotate(45 1200 720)" color="#3b82f6" />
+  </g>
+</svg>

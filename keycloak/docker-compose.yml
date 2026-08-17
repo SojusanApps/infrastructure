@@ -1,0 +1,55 @@
+services:
+  db:
+    image: postgres:18.4-alpine
+    container_name: sojusan-apps-keycloak-database
+    restart: unless-stopped
+    networks:
+      - db-internal
+    volumes:
+      - sojusan-apps-keycloak-postgres-data:/var/lib/postgresql
+    env_file: .env
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "sh -c 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}'",
+        ]
+      interval: 3s
+      timeout: 5s
+      retries: 3
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.7.0
+    container_name: sojusan-apps-keycloak
+    restart: unless-stopped
+    command: start
+    env_file: .env
+    networks:
+      - db-internal
+      - shared
+    volumes:
+      - ./keycloak/imports/realms:/opt/keycloak/data/import/
+      - ./keycloak/themes/sojusan-apps:/opt/keycloak/themes/sojusan-apps/
+      - ./keycloak/providers:/opt/keycloak/providers/
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      # The image has no curl; probe the management interface's /health/ready over a raw TCP socket instead.
+      test:
+        [
+          "CMD-SHELL",
+          "bash -c '{ printf \"HEAD /health/ready HTTP/1.0\\r\\n\\r\\n\" >&3; grep -q \"HTTP/1.0 200\" <&3; } 3<>/dev/tcp/localhost/9000'",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  db-internal:
+  shared:
+    name: sojusan-apps-shared-network
+    external: true
+
+volumes:
+  sojusan-apps-keycloak-postgres-data:
