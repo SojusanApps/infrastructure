@@ -1,0 +1,9 @@
+.vscode
+.env
+
+# Built Keycloak provider jars (built from keycloak/extensions via `just build-providers`)
+keycloak/providers/*.jar
+keycloak/extensions/*/target/
+
+# AI related
+.scratch

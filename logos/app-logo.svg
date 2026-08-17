@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <!-- Mantine primary colors (default blue scale approx) -->
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#339af0" /> <!-- primary-5 -->
+      <stop offset="100%" stop-color="#1c7ed6" /> <!-- primary-7 -->
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#ffffff" />
+
+  <g transform="translate(600, 315)" text-anchor="middle">
+    <!-- Sojusan -->
+    <text
+      y="-20"
+      font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+      font-weight="800"
+      font-style="italic"
+      font-size="160"
+      fill="url(#primaryGrad)"
+      letter-spacing="16">
+      Sojusan
+    </text>
+
+    <!-- Auth -->
+    <text
+      y="120"
+      font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+      font-weight="600"
+      font-size="100"
+      fill="#334155"
+      letter-spacing="22">
+      Auth
+    </text>
+  </g>
+</svg>
