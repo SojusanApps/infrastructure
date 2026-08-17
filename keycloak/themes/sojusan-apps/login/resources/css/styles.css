@@ -1,0 +1,203 @@
+:root {
+    --sojusan-ink: #1c1830;
+    --sojusan-primary: #5b4fd6;
+    --sojusan-primary-hover: #4a3fc0;
+    --sojusan-bg: #f5f3fb;
+    --sojusan-bg-glow: #e7e1fa;
+    --sojusan-border: #e3ddf5;
+    --sojusan-muted: #6b6685;
+
+    --keycloak-card-top-color: var(--sojusan-primary);
+}
+
+.login-pf body {
+    background-color: var(--sojusan-bg);
+    background-image:
+        url("../img/gaming-background.svg"),
+        radial-gradient(circle at 12% 15%, var(--sojusan-bg-glow) 0%, transparent 40%),
+        radial-gradient(circle at 88% 85%, var(--sojusan-bg-glow) 0%, transparent 42%);
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: center, center, center;
+    background-size: cover, cover, cover;
+    background-attachment: fixed, fixed, fixed;
+    height: 100%;
+}
+
+.pf-v5-c-login__container {
+    grid-template-columns: 34rem;
+    grid-template-areas: "header"
+                         "main"
+}
+
+.sojusan-brand {
+    display: flex;
+    justify-content: center;
+    padding-block: 0.5rem 1.5rem;
+}
+
+.sojusan-logo {
+    height: 130px;
+    width: auto;
+    max-width: 100%;
+}
+
+.pf-v5-c-login__main {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 24px 60px -16px rgba(28, 24, 48, 0.2), 0 4px 12px rgba(28, 24, 48, 0.06);
+    overflow: hidden;
+}
+
+.pf-v5-c-login__main-header {
+    border-top: 4px solid var(--keycloak-card-top-color);
+}
+
+.pf-v5-c-title,
+#kc-page-title {
+    color: var(--sojusan-ink);
+    font-weight: 700;
+}
+
+.pf-v5-c-login__main-footer-band:first-child {
+    margin-block-start: var(--pf-v5-global--spacer--lg);
+}
+
+.pf-v5-c-login__main-footer-band:last-child {
+    padding-bottom: 0;
+}
+
+.pf-v5-c-form-control {
+    border-radius: 12px;
+    border-color: var(--sojusan-border);
+}
+
+.pf-v5-c-form-control:focus {
+    border-color: var(--sojusan-primary);
+    box-shadow: 0 0 0 1px var(--sojusan-primary);
+}
+
+.pf-v5-c-button.pf-m-primary {
+    background-color: var(--sojusan-primary);
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.pf-v5-c-button.pf-m-primary:hover,
+.pf-v5-c-button.pf-m-primary:focus {
+    background-color: var(--sojusan-primary-hover);
+}
+
+.pf-v5-c-button.pf-m-secondary {
+    border-radius: 999px;
+    border-color: var(--sojusan-primary);
+    color: var(--sojusan-primary);
+}
+
+.pf-v5-c-button.pf-m-secondary:hover,
+.pf-v5-c-button.pf-m-secondary:focus {
+    background-color: var(--sojusan-bg-glow);
+}
+
+.pf-v5-c-button.pf-m-link {
+    color: var(--sojusan-primary);
+    font-weight: 600;
+}
+
+.pf-v5-c-login__main-footer-band a {
+    color: var(--sojusan-primary);
+    font-weight: 600;
+}
+
+.pf-v5-c-check__input {
+    accent-color: var(--sojusan-primary);
+}
+
+.pf-v5-c-login__main-footer-band-item,
+.pf-v5-u-color-200 {
+    color: var(--sojusan-muted);
+}
+
+.kc-login-tooltip .kc-tooltip-text {
+    top: -3px;
+    left: 160%;
+    background-color: black;
+    visibility: hidden;
+    color: #fff;
+
+    min-width: 130px;
+    text-align: center;
+    border-radius: 2px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+    padding: 5px;
+
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.kc-login-tooltip:hover .kc-tooltip-text {
+    visibility: visible;
+    opacity: 0.7;
+}
+
+.kc-login-tooltip .kc-tooltip-text::after {
+    content: " ";
+    position: absolute;
+    top: 15px;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+
+/* keycloak.v2's user-profile-commons.ftl renders attribute help text
+   (annotations.inputHelperTextBefore/After) into divs with these stable
+   id prefixes but no styled class, so it shows up as plain unstyled block
+   text; dial it down so it doesn't compete with the field label. */
+[id^="form-help-text-before-"],
+[id^="form-help-text-after-"] {
+    font-size: 0.8125rem;
+    color: var(--sojusan-muted);
+    margin-block: 2px 6px;
+}
+
+#kc-recovery-codes-list {
+    columns: 2;
+}
+
+#certificate_subjectDN {
+    overflow-wrap: break-word;
+}
+
+#kc-verify-email-form {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+#kc-code pre code {
+    word-break: break-all;
+}
+
+hr {
+    margin-top: var(--pf-v5-global--spacer--sm);
+    margin-bottom: var(--pf-v5-global--spacer--md);
+}
+
+#kc-social-providers svg {
+    height: var(--pf-v5-global--FontSize--xl);
+}
+
+#kc-social-providers svg:not(.google) {
+    filter: invert(20%) sepia(60%) saturate(2000%) hue-rotate(230deg) brightness(90%) contrast(95%);
+}
+
+@media (min-width: 768px) {
+    div.pf-v5-c-login__main-header:has(.pf-v5-c-login__main-header-utilities) {
+        grid-template-columns: 70% 30%;
+    }
+}
+
+#kc-form-webauthn {
+    gap: 0.875rem;
+}

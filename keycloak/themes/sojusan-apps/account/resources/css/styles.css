@@ -1,0 +1,82 @@
+:root {
+    --sojusan-ink: #1c1830;
+    --sojusan-primary: #5b4fd6;
+    --sojusan-primary-hover: #4a3fc0;
+    --sojusan-bg: #f5f3fb;
+    --sojusan-bg-tint: #f0eefb;
+    --sojusan-border: #e3ddf5;
+
+    --pf-v5-global--primary-color--100: var(--sojusan-primary);
+    --pf-v5-global--primary-color--200: var(--sojusan-primary);
+    --pf-v5-global--primary-color--light-100: var(--sojusan-primary);
+    --pf-v5-global--primary-color--dark-100: var(--sojusan-primary);
+    --pf-v5-global--link--Color: var(--sojusan-primary);
+    --pf-v5-global--link--Color--hover: var(--sojusan-primary-hover);
+    --pf-v5-global--active-color--100: var(--sojusan-primary);
+}
+
+body {
+    background-color: var(--sojusan-bg);
+}
+
+/* The masthead ships PatternFly's dark variant by default (with light-on-dark
+   text/icon tokens baked in); repaint it light and swap those tokens to their
+   dark-on-light equivalents, mirroring what PatternFly's own `pf-m-light`
+   modifier class would do if we could add it to the compiled React app. */
+/* PatternFly sets these same tokens directly on the sidebar-toggle button
+   (`.pf-v5-c-masthead .pf-v5-c-button.pf-m-plain`), not just on `.pf-v5-c-masthead`
+   itself, so that selector needs the override too or its icon stays styled
+   for a dark bar and disappears against the white one. */
+.pf-v5-c-masthead,
+.pf-v5-c-masthead .pf-v5-c-button.pf-m-plain {
+    --pf-v5-global--Color--100: var(--pf-v5-global--Color--dark-100);
+    --pf-v5-global--Color--200: var(--pf-v5-global--Color--dark-200);
+    --pf-v5-global--BorderColor--100: var(--pf-v5-global--BorderColor--dark-100);
+    --pf-v5-global--primary-color--100: var(--sojusan-primary);
+    --pf-v5-global--link--Color: var(--pf-v5-global--link--Color--dark);
+    --pf-v5-global--link--Color--hover: var(--pf-v5-global--link--Color--dark--hover);
+    --pf-v5-global--BackgroundColor--100: var(--pf-v5-global--BackgroundColor--light-100);
+    --pf-v5-global--icon--Color--light: var(--pf-v5-global--icon--Color--light--dark);
+    --pf-v5-global--icon--Color--dark: var(--pf-v5-global--icon--Color--dark--dark);
+}
+
+.pf-v5-c-masthead {
+    --pf-v5-c-masthead--BackgroundColor: #ffffff;
+    border-block-end: 1px solid var(--sojusan-border);
+}
+
+.pf-v5-c-masthead .pf-v5-c-brand {
+    max-height: 160px;
+}
+
+.pf-v5-c-button.pf-m-primary {
+    background-color: var(--sojusan-primary);
+}
+
+.pf-v5-c-button.pf-m-primary:hover,
+.pf-v5-c-button.pf-m-primary:focus {
+    background-color: var(--sojusan-primary-hover);
+}
+
+/* The sidebar nav defaults to PatternFly's dark variant; repaint it to match
+   the rest of the (light) account console instead of forking the React app
+   to add the `pf-m-light` modifier class. */
+.pf-v5-c-page__sidebar {
+    --pf-v5-c-page__sidebar--BackgroundColor: #ffffff;
+    border-inline-end: 1px solid var(--sojusan-border);
+}
+
+.pf-v5-c-nav {
+    --pf-v5-c-nav__link--Color: var(--sojusan-ink);
+    --pf-v5-c-nav__link--hover--Color: var(--sojusan-primary);
+    --pf-v5-c-nav__link--hover--BackgroundColor: var(--sojusan-bg-tint);
+    --pf-v5-c-nav__link--focus--Color: var(--sojusan-primary);
+    --pf-v5-c-nav__link--focus--BackgroundColor: var(--sojusan-bg-tint);
+    --pf-v5-c-nav__link--active--Color: var(--sojusan-primary);
+    --pf-v5-c-nav__link--active--BackgroundColor: var(--sojusan-bg-tint);
+    --pf-v5-c-nav__link--m-current--Color: var(--sojusan-primary);
+    --pf-v5-c-nav__link--m-current--BackgroundColor: var(--sojusan-bg-tint);
+    --pf-v5-c-nav__link--m-current--after--BorderColor: var(--sojusan-primary);
+    --pf-v5-c-nav__link--after--BorderColor: var(--sojusan-primary);
+    --pf-v5-c-nav__link--before--BorderColor: var(--sojusan-border);
+}

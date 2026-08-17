@@ -1776,10 +1776,10 @@
     "fromDisplayName": "SojusanApps-DEV",
     "connectionTimeout": "10000"
   },
-  "loginTheme": "keycloak.v2",
-  "accountTheme": "keycloak.v3",
+  "loginTheme": "sojusan-apps",
+  "accountTheme": "sojusan-apps",
   "adminTheme": "keycloak.v2",
-  "emailTheme": "keycloak",
+  "emailTheme": "sojusan-apps",
   "eventsEnabled": true,
   "eventsExpiration": 1800,
   "eventsListeners": [
