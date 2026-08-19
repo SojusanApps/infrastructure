@@ -1,9 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="350" viewBox="150 135 900 350">
   <defs>
-    <!-- Mantine primary colors (default blue scale approx) -->
+    <!-- Recolors to my-game-list-frontend's Pitch Black neon-cyan accent
+         under prefers-color-scheme: dark. This is an <img>-embedded SVG (used
+         by both the login header and the account masthead), so it can't read
+         the host page's .pf-v5-theme-dark class — but a standalone SVG
+         document's own <style> still evaluates media queries against the
+         browsing context, which is what Keycloak's dark-mode toggle is
+         itself driven by, so the two stay in sync without any extra markup. -->
+    <style>
+      .primaryGrad-stop1 { stop-color: #339af0; } /* Mantine primary-5 */
+      .primaryGrad-stop2 { stop-color: #1c7ed6; } /* Mantine primary-7 */
+
+      @media (prefers-color-scheme: dark) {
+        .primaryGrad-stop1 { stop-color: #67e8f9; } /* Pitch Black primary-300 */
+        .primaryGrad-stop2 { stop-color: #22d3ee; } /* Pitch Black primary-400 */
+      }
+    </style>
     <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#339af0" /> <!-- primary-5 -->
-      <stop offset="100%" stop-color="#1c7ed6" /> <!-- primary-7 -->
+      <stop offset="0%" class="primaryGrad-stop1" />
+      <stop offset="100%" class="primaryGrad-stop2" />
     </linearGradient>
   </defs>
 

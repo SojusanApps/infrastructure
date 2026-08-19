@@ -201,3 +201,46 @@ hr {
 #kc-form-webauthn {
     gap: 0.875rem;
 }
+
+/* Pitch Black: values ported from my-game-list-frontend's src/css/colors.css
+   (:root[data-app-theme="pitch-black"] block) so the two apps' dark identity
+   matches exactly. Toggled by Keycloak's own darkMode/prefers-color-scheme
+   mechanism (see theme.properties), which adds this class to <html>. */
+html.pf-v5-theme-dark {
+    --sojusan-ink: #fafafa;
+    --sojusan-primary: #22d3ee;
+    --sojusan-primary-hover: #0891b2;
+    --sojusan-bg: #09090b;
+    /* No longer used for a background glow layer (see the body rule below),
+       but .pf-v5-c-button.pf-m-secondary:hover still reads this for its
+       fill — a dark cyan tint (Pitch Black's primary-950) instead of the
+       light lavender, so secondary-button hover doesn't regress. */
+    --sojusan-bg-glow: #083344;
+    --sojusan-border: #3f3f46;
+    --sojusan-muted: #a1a1aa;
+}
+
+/* The light-mode background layers a radial "glow" gradient behind the SVG
+   art; Pitch Black's own background asset supplies its own opaque black
+   backdrop instead (see gaming-background-pitch-black.svg), so the glow
+   layer is dropped rather than recolored. */
+html.pf-v5-theme-dark.login-pf body {
+    background-image: url("../img/gaming-background-pitch-black.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+html.pf-v5-theme-dark .pf-v5-c-login__main {
+    background-color: #18181b;
+    border: 1px solid var(--sojusan-border);
+    box-shadow: 0 24px 60px -16px rgba(0, 0, 0, 0.6), 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Recolors the non-Google provider icons to the Pitch Black neon-cyan
+   accent, mirroring the light-mode filter's role (which targets the
+   brand indigo instead). */
+html.pf-v5-theme-dark #kc-social-providers svg:not(.google) {
+    filter: invert(85%) sepia(53%) saturate(1653%) hue-rotate(140deg) brightness(101%) contrast(101%);
+}
