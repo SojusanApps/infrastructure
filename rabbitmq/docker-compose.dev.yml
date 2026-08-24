@@ -1,0 +1,12 @@
+services:
+  rabbitmq:
+    ports:
+      - "5671:5671"
+      - "127.0.0.1:5672:5672"
+      - "127.0.0.1:15672:15672"
+
+# Locally there's no reverse proxy joining this network, so let compose create
+# it as a normal network instead of requiring it to pre-exist (see keycloak/docker-compose.dev.yml).
+networks:
+  shared:
+    external: false

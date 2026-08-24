@@ -27,3 +27,15 @@ _Avoid_: Root user, superuser
 **Dev Stack / Production Stack**:
 The two `docker compose` configurations for a given service — a base file (production behavior: `start` mode, no shortcuts) plus a `docker-compose.dev.yml` override (`start-dev`, local-friendly defaults) layered on top for local work.
 _Avoid_: Local environment, staging (staging isn't defined/in scope here)
+
+**Shared Broker**:
+The RabbitMQ instance owned by this repo, alongside Keycloak. Its default vhost hosts the deletion broadcast (see User Deletion Event); beyond that, it hosts a Private Vhost per Consuming App that wants broker-backed infrastructure of its own.
+_Avoid_: Deletion Broker, message queue, event bus, RabbitMQ instance
+
+**User Deletion Event**:
+The message broadcast on the Shared Broker's default vhost when a user's Keycloak account is deleted (self-service or admin-initiated). Delivered at-least-once; a Consuming App acknowledges it only after fully purging its own data for that user.
+_Avoid_: Webhook payload
+
+**Private Vhost**:
+A Consuming App's own RabbitMQ vhost on the Shared Broker — a fully isolated namespace the app has complete configure/write/read control over, invisible to every other Consuming App and unrelated to the deletion broadcast. The app manages its own exchanges/queues inside it (e.g. Celery's own task queues); this repo declares only the vhost and the app's credentials, never the app's internal queue topology.
+_Avoid_: Tenant, namespace, private queue
