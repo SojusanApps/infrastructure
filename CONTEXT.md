@@ -39,3 +39,11 @@ _Avoid_: Webhook payload
 **Private Vhost**:
 A Consuming App's own RabbitMQ vhost on the Shared Broker — a fully isolated namespace the app has complete configure/write/read control over, invisible to every other Consuming App and unrelated to the deletion broadcast. The app manages its own exchanges/queues inside it (e.g. Celery's own task queues); this repo declares only the vhost and the app's credentials, never the app's internal queue topology.
 _Avoid_: Tenant, namespace, private queue
+
+**Username**:
+The unique login identifier for a Keycloak account. Sent to Consuming Apps as the `preferred_username` claim, but not intended for display — see Nickname for the public-facing identity.
+_Avoid_: Login, handle
+
+**Nickname**:
+The unique, required display name attached to a Keycloak account, separate from Username. Shown publicly to other users across every Consuming App.
+_Avoid_: Display name, username, handle
