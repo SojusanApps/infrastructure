@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="350" viewBox="150 135 900 350">
   <defs>
-    <!-- Recolors to my-game-list-frontend's Pitch Black neon-cyan accent
+    <!-- Recolors to game-list-frontend's Pitch Black neon-cyan accent
          under prefers-color-scheme: dark. This is an <img>-embedded SVG (used
          by both the login header and the account masthead), so it can't read
          the host page's .pf-v5-theme-dark class — but a standalone SVG

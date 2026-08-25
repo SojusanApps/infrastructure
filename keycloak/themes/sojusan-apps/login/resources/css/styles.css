@@ -1,154 +1,156 @@
 :root {
-    --sojusan-ink: #1c1830;
-    --sojusan-primary: #5b4fd6;
-    --sojusan-primary-hover: #4a3fc0;
-    --sojusan-bg: #f5f3fb;
-    --sojusan-bg-glow: #e7e1fa;
-    --sojusan-border: #e3ddf5;
-    --sojusan-muted: #6b6685;
+  --sojusan-ink: #1c1830;
+  --sojusan-primary: #5b4fd6;
+  --sojusan-primary-hover: #4a3fc0;
+  --sojusan-bg: #f5f3fb;
+  --sojusan-bg-glow: #e7e1fa;
+  --sojusan-border: #e3ddf5;
+  --sojusan-muted: #6b6685;
 
-    --keycloak-card-top-color: var(--sojusan-primary);
+  --keycloak-card-top-color: var(--sojusan-primary);
 }
 
 .login-pf body {
-    background-color: var(--sojusan-bg);
-    background-image:
-        url("../img/gaming-background.svg"),
-        radial-gradient(circle at 12% 15%, var(--sojusan-bg-glow) 0%, transparent 40%),
-        radial-gradient(circle at 88% 85%, var(--sojusan-bg-glow) 0%, transparent 42%);
-    background-repeat: no-repeat, no-repeat, no-repeat;
-    background-position: center, center, center;
-    background-size: cover, cover, cover;
-    background-attachment: fixed, fixed, fixed;
-    height: 100%;
+  background-color: var(--sojusan-bg);
+  background-image:
+    url("../img/gaming-background.svg"), radial-gradient(circle at 12% 15%, var(--sojusan-bg-glow) 0%, transparent 40%),
+    radial-gradient(circle at 88% 85%, var(--sojusan-bg-glow) 0%, transparent 42%);
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: center, center, center;
+  background-size: cover, cover, cover;
+  background-attachment: fixed, fixed, fixed;
+  height: 100%;
 }
 
 .pf-v5-c-login__container {
-    grid-template-columns: 34rem;
-    grid-template-areas: "header"
-                         "main"
+  grid-template-columns: 34rem;
+  grid-template-areas:
+    "header"
+    "main";
 }
 
 .sojusan-brand {
-    display: flex;
-    justify-content: center;
-    padding-block: 0.5rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  padding-block: 0.5rem 1.5rem;
 }
 
 .sojusan-logo {
-    height: 130px;
-    width: auto;
-    max-width: 100%;
+  height: 130px;
+  width: auto;
+  max-width: 100%;
 }
 
 .pf-v5-c-login__main {
-    background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 24px 60px -16px rgba(28, 24, 48, 0.2), 0 4px 12px rgba(28, 24, 48, 0.06);
-    overflow: hidden;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow:
+    0 24px 60px -16px rgba(28, 24, 48, 0.2),
+    0 4px 12px rgba(28, 24, 48, 0.06);
+  overflow: hidden;
 }
 
 .pf-v5-c-login__main-header {
-    border-top: 4px solid var(--keycloak-card-top-color);
+  border-top: 4px solid var(--keycloak-card-top-color);
 }
 
 .pf-v5-c-title,
 #kc-page-title {
-    color: var(--sojusan-ink);
-    font-weight: 700;
+  color: var(--sojusan-ink);
+  font-weight: 700;
 }
 
 .pf-v5-c-login__main-footer-band:first-child {
-    margin-block-start: var(--pf-v5-global--spacer--lg);
+  margin-block-start: var(--pf-v5-global--spacer--lg);
 }
 
 .pf-v5-c-login__main-footer-band:last-child {
-    padding-bottom: 0;
+  padding-bottom: 0;
 }
 
 .pf-v5-c-form-control {
-    border-radius: 12px;
-    border-color: var(--sojusan-border);
+  border-radius: 12px;
+  border-color: var(--sojusan-border);
 }
 
 .pf-v5-c-form-control:focus {
-    border-color: var(--sojusan-primary);
-    box-shadow: 0 0 0 1px var(--sojusan-primary);
+  border-color: var(--sojusan-primary);
+  box-shadow: 0 0 0 1px var(--sojusan-primary);
 }
 
 .pf-v5-c-button.pf-m-primary {
-    background-color: var(--sojusan-primary);
-    border-radius: 999px;
-    font-weight: 600;
+  background-color: var(--sojusan-primary);
+  border-radius: 999px;
+  font-weight: 600;
 }
 
 .pf-v5-c-button.pf-m-primary:hover,
 .pf-v5-c-button.pf-m-primary:focus {
-    background-color: var(--sojusan-primary-hover);
+  background-color: var(--sojusan-primary-hover);
 }
 
 .pf-v5-c-button.pf-m-secondary {
-    border-radius: 999px;
-    border-color: var(--sojusan-primary);
-    color: var(--sojusan-primary);
+  border-radius: 999px;
+  border-color: var(--sojusan-primary);
+  color: var(--sojusan-primary);
 }
 
 .pf-v5-c-button.pf-m-secondary:hover,
 .pf-v5-c-button.pf-m-secondary:focus {
-    background-color: var(--sojusan-bg-glow);
+  background-color: var(--sojusan-bg-glow);
 }
 
 .pf-v5-c-button.pf-m-link {
-    color: var(--sojusan-primary);
-    font-weight: 600;
+  color: var(--sojusan-primary);
+  font-weight: 600;
 }
 
 .pf-v5-c-login__main-footer-band a {
-    color: var(--sojusan-primary);
-    font-weight: 600;
+  color: var(--sojusan-primary);
+  font-weight: 600;
 }
 
 .pf-v5-c-check__input {
-    accent-color: var(--sojusan-primary);
+  accent-color: var(--sojusan-primary);
 }
 
 .pf-v5-c-login__main-footer-band-item,
 .pf-v5-u-color-200 {
-    color: var(--sojusan-muted);
+  color: var(--sojusan-muted);
 }
 
 .kc-login-tooltip .kc-tooltip-text {
-    top: -3px;
-    left: 160%;
-    background-color: black;
-    visibility: hidden;
-    color: #fff;
+  top: -3px;
+  left: 160%;
+  background-color: black;
+  visibility: hidden;
+  color: #fff;
 
-    min-width: 130px;
-    text-align: center;
-    border-radius: 2px;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
-    padding: 5px;
+  min-width: 130px;
+  text-align: center;
+  border-radius: 2px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+  padding: 5px;
 
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.5s;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.5s;
 }
 
 .kc-login-tooltip:hover .kc-tooltip-text {
-    visibility: visible;
-    opacity: 0.7;
+  visibility: visible;
+  opacity: 0.7;
 }
 
 .kc-login-tooltip .kc-tooltip-text::after {
-    content: " ";
-    position: absolute;
-    top: 15px;
-    right: 100%;
-    margin-top: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent black transparent transparent;
+  content: " ";
+  position: absolute;
+  top: 15px;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
 }
 
 /* keycloak.v2's user-profile-commons.ftl renders attribute help text
@@ -157,67 +159,67 @@
    text; dial it down so it doesn't compete with the field label. */
 [id^="form-help-text-before-"],
 [id^="form-help-text-after-"] {
-    font-size: 0.8125rem;
-    color: var(--sojusan-muted);
-    margin-block: 2px 6px;
+  font-size: 0.8125rem;
+  color: var(--sojusan-muted);
+  margin-block: 2px 6px;
 }
 
 #kc-recovery-codes-list {
-    columns: 2;
+  columns: 2;
 }
 
 #certificate_subjectDN {
-    overflow-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 #kc-verify-email-form {
-    margin-top: 24px;
-    margin-bottom: 24px;
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
 
 #kc-code pre code {
-    word-break: break-all;
+  word-break: break-all;
 }
 
 hr {
-    margin-top: var(--pf-v5-global--spacer--sm);
-    margin-bottom: var(--pf-v5-global--spacer--md);
+  margin-top: var(--pf-v5-global--spacer--sm);
+  margin-bottom: var(--pf-v5-global--spacer--md);
 }
 
 #kc-social-providers svg {
-    height: var(--pf-v5-global--FontSize--xl);
+  height: var(--pf-v5-global--FontSize--xl);
 }
 
 #kc-social-providers svg:not(.google) {
-    filter: invert(20%) sepia(60%) saturate(2000%) hue-rotate(230deg) brightness(90%) contrast(95%);
+  filter: invert(20%) sepia(60%) saturate(2000%) hue-rotate(230deg) brightness(90%) contrast(95%);
 }
 
 @media (min-width: 768px) {
-    div.pf-v5-c-login__main-header:has(.pf-v5-c-login__main-header-utilities) {
-        grid-template-columns: 70% 30%;
-    }
+  div.pf-v5-c-login__main-header:has(.pf-v5-c-login__main-header-utilities) {
+    grid-template-columns: 70% 30%;
+  }
 }
 
 #kc-form-webauthn {
-    gap: 0.875rem;
+  gap: 0.875rem;
 }
 
-/* Pitch Black: values ported from my-game-list-frontend's src/css/colors.css
+/* Pitch Black: values ported from game-list-frontend's src/css/colors.css
    (:root[data-app-theme="pitch-black"] block) so the two apps' dark identity
    matches exactly. Toggled by Keycloak's own darkMode/prefers-color-scheme
    mechanism (see theme.properties), which adds this class to <html>. */
 html.pf-v5-theme-dark {
-    --sojusan-ink: #fafafa;
-    --sojusan-primary: #22d3ee;
-    --sojusan-primary-hover: #0891b2;
-    --sojusan-bg: #09090b;
-    /* No longer used for a background glow layer (see the body rule below),
+  --sojusan-ink: #fafafa;
+  --sojusan-primary: #22d3ee;
+  --sojusan-primary-hover: #0891b2;
+  --sojusan-bg: #09090b;
+  /* No longer used for a background glow layer (see the body rule below),
        but .pf-v5-c-button.pf-m-secondary:hover still reads this for its
        fill — a dark cyan tint (Pitch Black's primary-950) instead of the
        light lavender, so secondary-button hover doesn't regress. */
-    --sojusan-bg-glow: #083344;
-    --sojusan-border: #3f3f46;
-    --sojusan-muted: #a1a1aa;
+  --sojusan-bg-glow: #083344;
+  --sojusan-border: #3f3f46;
+  --sojusan-muted: #a1a1aa;
 }
 
 /* The light-mode background layers a radial "glow" gradient behind the SVG
@@ -225,22 +227,24 @@ html.pf-v5-theme-dark {
    backdrop instead (see gaming-background-pitch-black.svg), so the glow
    layer is dropped rather than recolored. */
 html.pf-v5-theme-dark.login-pf body {
-    background-image: url("../img/gaming-background-pitch-black.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
+  background-image: url("../img/gaming-background-pitch-black.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 html.pf-v5-theme-dark .pf-v5-c-login__main {
-    background-color: #18181b;
-    border: 1px solid var(--sojusan-border);
-    box-shadow: 0 24px 60px -16px rgba(0, 0, 0, 0.6), 0 4px 12px rgba(0, 0, 0, 0.4);
+  background-color: #18181b;
+  border: 1px solid var(--sojusan-border);
+  box-shadow:
+    0 24px 60px -16px rgba(0, 0, 0, 0.6),
+    0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* Recolors the non-Google provider icons to the Pitch Black neon-cyan
    accent, mirroring the light-mode filter's role (which targets the
    brand indigo instead). */
 html.pf-v5-theme-dark #kc-social-providers svg:not(.google) {
-    filter: invert(85%) sepia(53%) saturate(1653%) hue-rotate(140deg) brightness(101%) contrast(101%);
+  filter: invert(85%) sepia(53%) saturate(1653%) hue-rotate(140deg) brightness(101%) contrast(101%);
 }

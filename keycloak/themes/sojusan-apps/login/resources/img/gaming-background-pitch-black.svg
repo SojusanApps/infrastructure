@@ -4,7 +4,7 @@
        — Pitch Black's chrome is pure black, so the background image should
        read as "dark background, neon objects" on its own rather than
        depending on what's composited underneath it. Ported from
-       my-game-list-frontend's src/assets/gaming-background-pitch-black.svg
+       game-list-frontend's src/assets/gaming-background-pitch-black.svg
        to keep the two apps' Pitch Black identity visually identical. -->
   <rect x="0" y="0" width="1920" height="1080" fill="#000000" />
   <defs>
