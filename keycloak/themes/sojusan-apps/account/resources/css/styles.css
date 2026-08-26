@@ -1,22 +1,22 @@
 :root {
-    --sojusan-ink: #1c1830;
-    --sojusan-primary: #5b4fd6;
-    --sojusan-primary-hover: #4a3fc0;
-    --sojusan-bg: #f5f3fb;
-    --sojusan-bg-tint: #f0eefb;
-    --sojusan-border: #e3ddf5;
+  --sojusan-ink: #1c1830;
+  --sojusan-primary: #5b4fd6;
+  --sojusan-primary-hover: #4a3fc0;
+  --sojusan-bg: #f5f3fb;
+  --sojusan-bg-tint: #f0eefb;
+  --sojusan-border: #e3ddf5;
 
-    --pf-v5-global--primary-color--100: var(--sojusan-primary);
-    --pf-v5-global--primary-color--200: var(--sojusan-primary);
-    --pf-v5-global--primary-color--light-100: var(--sojusan-primary);
-    --pf-v5-global--primary-color--dark-100: var(--sojusan-primary);
-    --pf-v5-global--link--Color: var(--sojusan-primary);
-    --pf-v5-global--link--Color--hover: var(--sojusan-primary-hover);
-    --pf-v5-global--active-color--100: var(--sojusan-primary);
+  --pf-v5-global--primary-color--100: var(--sojusan-primary);
+  --pf-v5-global--primary-color--200: var(--sojusan-primary);
+  --pf-v5-global--primary-color--light-100: var(--sojusan-primary);
+  --pf-v5-global--primary-color--dark-100: var(--sojusan-primary);
+  --pf-v5-global--link--Color: var(--sojusan-primary);
+  --pf-v5-global--link--Color--hover: var(--sojusan-primary-hover);
+  --pf-v5-global--active-color--100: var(--sojusan-primary);
 }
 
 body {
-    background-color: var(--sojusan-bg);
+  background-color: var(--sojusan-bg);
 }
 
 /* The masthead ships PatternFly's dark variant by default (with light-on-dark
@@ -29,54 +29,102 @@ body {
    for a dark bar and disappears against the white one. */
 .pf-v5-c-masthead,
 .pf-v5-c-masthead .pf-v5-c-button.pf-m-plain {
-    --pf-v5-global--Color--100: var(--pf-v5-global--Color--dark-100);
-    --pf-v5-global--Color--200: var(--pf-v5-global--Color--dark-200);
-    --pf-v5-global--BorderColor--100: var(--pf-v5-global--BorderColor--dark-100);
-    --pf-v5-global--primary-color--100: var(--sojusan-primary);
-    --pf-v5-global--link--Color: var(--pf-v5-global--link--Color--dark);
-    --pf-v5-global--link--Color--hover: var(--pf-v5-global--link--Color--dark--hover);
-    --pf-v5-global--BackgroundColor--100: var(--pf-v5-global--BackgroundColor--light-100);
-    --pf-v5-global--icon--Color--light: var(--pf-v5-global--icon--Color--light--dark);
-    --pf-v5-global--icon--Color--dark: var(--pf-v5-global--icon--Color--dark--dark);
+  --pf-v5-global--Color--100: var(--pf-v5-global--Color--dark-100);
+  --pf-v5-global--Color--200: var(--pf-v5-global--Color--dark-200);
+  --pf-v5-global--BorderColor--100: var(--pf-v5-global--BorderColor--dark-100);
+  --pf-v5-global--primary-color--100: var(--sojusan-primary);
+  --pf-v5-global--link--Color: var(--pf-v5-global--link--Color--dark);
+  --pf-v5-global--link--Color--hover: var(--pf-v5-global--link--Color--dark--hover);
+  --pf-v5-global--BackgroundColor--100: var(--pf-v5-global--BackgroundColor--light-100);
+  --pf-v5-global--icon--Color--light: var(--pf-v5-global--icon--Color--light--dark);
+  --pf-v5-global--icon--Color--dark: var(--pf-v5-global--icon--Color--dark--dark);
 }
 
 .pf-v5-c-masthead {
-    --pf-v5-c-masthead--BackgroundColor: #ffffff;
-    border-block-end: 1px solid var(--sojusan-border);
+  --pf-v5-c-masthead--BackgroundColor: #ffffff;
+  border-block-end: 1px solid var(--sojusan-border);
 }
 
 .pf-v5-c-masthead .pf-v5-c-brand {
-    max-height: 160px;
+  max-height: 160px;
 }
 
 .pf-v5-c-button.pf-m-primary {
-    background-color: var(--sojusan-primary);
+  background-color: var(--sojusan-primary);
 }
 
 .pf-v5-c-button.pf-m-primary:hover,
 .pf-v5-c-button.pf-m-primary:focus {
-    background-color: var(--sojusan-primary-hover);
+  background-color: var(--sojusan-primary-hover);
 }
 
 /* The sidebar nav defaults to PatternFly's dark variant; repaint it to match
    the rest of the (light) account console instead of forking the React app
    to add the `pf-m-light` modifier class. */
 .pf-v5-c-page__sidebar {
-    --pf-v5-c-page__sidebar--BackgroundColor: #ffffff;
-    border-inline-end: 1px solid var(--sojusan-border);
+  --pf-v5-c-page__sidebar--BackgroundColor: #ffffff;
+  border-inline-end: 1px solid var(--sojusan-border);
 }
 
 .pf-v5-c-nav {
-    --pf-v5-c-nav__link--Color: var(--sojusan-ink);
-    --pf-v5-c-nav__link--hover--Color: var(--sojusan-primary);
-    --pf-v5-c-nav__link--hover--BackgroundColor: var(--sojusan-bg-tint);
-    --pf-v5-c-nav__link--focus--Color: var(--sojusan-primary);
-    --pf-v5-c-nav__link--focus--BackgroundColor: var(--sojusan-bg-tint);
-    --pf-v5-c-nav__link--active--Color: var(--sojusan-primary);
-    --pf-v5-c-nav__link--active--BackgroundColor: var(--sojusan-bg-tint);
-    --pf-v5-c-nav__link--m-current--Color: var(--sojusan-primary);
-    --pf-v5-c-nav__link--m-current--BackgroundColor: var(--sojusan-bg-tint);
-    --pf-v5-c-nav__link--m-current--after--BorderColor: var(--sojusan-primary);
-    --pf-v5-c-nav__link--after--BorderColor: var(--sojusan-primary);
-    --pf-v5-c-nav__link--before--BorderColor: var(--sojusan-border);
+  --pf-v5-c-nav__link--Color: var(--sojusan-ink);
+  --pf-v5-c-nav__link--hover--Color: var(--sojusan-primary);
+  --pf-v5-c-nav__link--hover--BackgroundColor: var(--sojusan-bg-tint);
+  --pf-v5-c-nav__link--focus--Color: var(--sojusan-primary);
+  --pf-v5-c-nav__link--focus--BackgroundColor: var(--sojusan-bg-tint);
+  --pf-v5-c-nav__link--active--Color: var(--sojusan-primary);
+  --pf-v5-c-nav__link--active--BackgroundColor: var(--sojusan-bg-tint);
+  --pf-v5-c-nav__link--m-current--Color: var(--sojusan-primary);
+  --pf-v5-c-nav__link--m-current--BackgroundColor: var(--sojusan-bg-tint);
+  --pf-v5-c-nav__link--m-current--after--BorderColor: var(--sojusan-primary);
+  --pf-v5-c-nav__link--after--BorderColor: var(--sojusan-primary);
+  --pf-v5-c-nav__link--before--BorderColor: var(--sojusan-border);
+}
+
+/* Pitch Black: values ported from game-list-frontend's src/css/colors.css
+   (:root[data-app-theme="pitch-black"] block) so the two apps' dark identity
+   matches exactly. Toggled by Keycloak's own darkMode/prefers-color-scheme
+   mechanism (see theme.properties), which adds this class to <html>. Most
+   rules above already read through these --sojusan-* custom properties, so
+   redefining them here is enough to recolor the page body and buttons;
+   only the masthead/sidebar chrome (hardcoded to light-mode hex below)
+   needs its own explicit override. */
+html.pf-v5-theme-dark {
+  --sojusan-ink: #fafafa;
+  --sojusan-primary: #22d3ee;
+  --sojusan-primary-hover: #0891b2;
+  --sojusan-bg: #09090b;
+  --sojusan-bg-tint: #18181b;
+  --sojusan-border: #3f3f46;
+}
+
+/* The light-mode block above forces the masthead/sidebar to a white
+   PatternFly-light look. Pitch Black's chrome goes pure black instead of
+   following the ordinary dark background step, matching how TopBar/Footer
+   are hardcoded to #000000 (not --color-background-100) in the frontend. */
+html.pf-v5-theme-dark .pf-v5-c-masthead,
+html.pf-v5-theme-dark .pf-v5-c-masthead .pf-v5-c-button.pf-m-plain {
+  --pf-v5-global--Color--100: #ffffff;
+  --pf-v5-global--Color--200: #d4d4d8;
+  --pf-v5-global--BorderColor--100: #27272a;
+  --pf-v5-global--primary-color--100: var(--sojusan-primary);
+  --pf-v5-global--link--Color: var(--sojusan-primary);
+  --pf-v5-global--link--Color--hover: var(--sojusan-primary-hover);
+  --pf-v5-global--BackgroundColor--100: #000000;
+  --pf-v5-global--icon--Color--light: #ffffff;
+  --pf-v5-global--icon--Color--dark: #d4d4d8;
+}
+
+/* BackgroundColor is hardcoded in the light-mode rule above so it needs an
+   explicit override, but border-block-end already reads var(--sojusan-border)
+   there and picks up the redefinition above on its own. Same reasoning
+   applies to .pf-v5-c-page__sidebar and .pf-v5-c-nav below — every property
+   in their light-mode rules already derives from a --sojusan-* custom
+   property, so nothing further needs restating here. */
+html.pf-v5-theme-dark .pf-v5-c-masthead {
+  --pf-v5-c-masthead--BackgroundColor: #000000;
+}
+
+html.pf-v5-theme-dark .pf-v5-c-page__sidebar {
+  --pf-v5-c-page__sidebar--BackgroundColor: #000000;
 }

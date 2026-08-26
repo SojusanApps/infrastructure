@@ -1,0 +1,110 @@
+{
+  "vhosts": [
+    { "name": "/" },
+    { "name": "gamelist-backend" }
+  ],
+  "users": [
+    {
+      "name": "operator",
+      "password": "__RABBITMQ_ADMIN_PASSWORD__",
+      "tags": ["administrator"]
+    },
+    {
+      "name": "keycloak-deletion-publisher",
+      "password": "__RABBITMQ_KEYCLOAK_PUBLISHER_PASSWORD__",
+      "tags": []
+    },
+    {
+      "name": "gamelist-backend",
+      "password": "__RABBITMQ_GAMELIST_BACKEND_PASSWORD__",
+      "tags": []
+    }
+  ],
+  "permissions": [
+    {
+      "user": "operator",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    {
+      "user": "keycloak-deletion-publisher",
+      "vhost": "/",
+      "configure": "^$",
+      "write": "^user-deletion$",
+      "read": "^$"
+    },
+    {
+      "user": "gamelist-backend",
+      "vhost": "/",
+      "configure": "^$",
+      "write": "^$",
+      "read": "^gamelist-backend\\.user-deletion$"
+    },
+    {
+      "user": "gamelist-backend",
+      "vhost": "gamelist-backend",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "exchanges": [
+    {
+      "name": "user-deletion",
+      "vhost": "/",
+      "type": "fanout",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "user-deletion.dlx",
+      "vhost": "/",
+      "type": "fanout",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    }
+  ],
+  "queues": [
+    {
+      "name": "gamelist-backend.user-deletion",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "user-deletion.dlx",
+        "x-message-ttl": 604800000
+      }
+    },
+    {
+      "name": "gamelist-backend.user-deletion.dlq",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "user-deletion",
+      "vhost": "/",
+      "destination": "gamelist-backend.user-deletion",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {}
+    },
+    {
+      "source": "user-deletion.dlx",
+      "vhost": "/",
+      "destination": "gamelist-backend.user-deletion.dlq",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {}
+    }
+  ]
+}

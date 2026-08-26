@@ -1,0 +1,31 @@
+services:
+  rabbitmq:
+    image: rabbitmq:4.3.5-management-alpine
+    container_name: sojusan-apps-rabbitmq
+    restart: unless-stopped
+    entrypoint: ["/usr/local/bin/docker-entrypoint-wrapper.sh"]
+    command: ["rabbitmq-server"]
+    env_file: .env
+    networks:
+      - shared
+    ports:
+      - "5671:5671"
+    volumes:
+      - ./rabbitmq/conf.d:/etc/rabbitmq/conf.d:ro
+      - ./rabbitmq/definitions/definitions.json.template:/etc/rabbitmq/definitions.json.template:ro
+      - ./rabbitmq/docker-entrypoint-wrapper.sh:/usr/local/bin/docker-entrypoint-wrapper.sh:ro
+      - ${RABBITMQ_TLS_DIR}:/etc/rabbitmq/tls:ro
+      - sojusan-apps-rabbitmq-data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "check_running"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  shared:
+    name: sojusan-apps-shared-network
+    external: true
+
+volumes:
+  sojusan-apps-rabbitmq-data:
