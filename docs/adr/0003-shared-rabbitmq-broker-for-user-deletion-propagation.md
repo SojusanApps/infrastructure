@@ -9,3 +9,5 @@ We also considered connecting out to each Consuming App's own broker (e.g. the R
 The message contract is a plain AMQP message with a JSON body (`event`, `schema_version`, `realm`, `sub`, `deleted_at`) — not Celery's native task-message protocol. Emitting real Celery tasks from a Java Keycloak extension would couple this repo to Celery's wire format and assume every Consuming App runs Celery, which isn't guaranteed for apps that aren't `gamelist-backend`. Consuming Apps that use Celery internally bridge the plain message into a task themselves.
 
 RabbitMQ terminates its own TLS (AMQPS) rather than relying on the external reverse proxy, since that proxy is HTTP-only (see [0002](./0002-tls-terminated-by-external-reverse-proxy.md)) and does not do raw TCP passthrough.
+
+Update: this AMQPS listener was later removed in favor of binding directly to the VPN interface — see [0007](./0007-rabbitmq-drops-amqps-for-vpn-only-access.md).

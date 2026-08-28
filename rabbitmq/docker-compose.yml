@@ -9,12 +9,14 @@ services:
     networks:
       - shared
     ports:
-      - "5671:5671"
+      # Bound to the WireGuard server's own tunnel address, not 0.0.0.0 - only
+      # reachable via the VPN (see docs/adr/0007-rabbitmq-drops-amqps-for-vpn-only-access.md).
+      - "${WG_SERVER_ADDRESS}:5672:5672"
+      - "${WG_SERVER_ADDRESS}:15672:15672"
     volumes:
       - ./rabbitmq/conf.d:/etc/rabbitmq/conf.d:ro
       - ./rabbitmq/definitions/definitions.json.template:/etc/rabbitmq/definitions.json.template:ro
       - ./rabbitmq/docker-entrypoint-wrapper.sh:/usr/local/bin/docker-entrypoint-wrapper.sh:ro
-      - ${RABBITMQ_TLS_DIR}:/etc/rabbitmq/tls:ro
       - sojusan-apps-rabbitmq-data:/var/lib/rabbitmq
     healthcheck:
       test: ["CMD", "rabbitmq-diagnostics", "-q", "check_running"]
