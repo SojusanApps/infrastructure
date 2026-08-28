@@ -1,0 +1,23 @@
+services:
+  wg-easy:
+    image: ghcr.io/wg-easy/wg-easy:15
+    container_name: wg-easy
+    network_mode: "host"
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    security_opt:
+      - apparmor=unconfined
+      - systempaths=unconfined
+    environment:
+      - LANG=en
+      - PORT=51821
+      # Needed for SSH tunnel on localhost:
+      - INSECURE=true
+    volumes:
+      - ./etc_wireguard:/etc/wireguard
+      # Share kernel modules to host for iptables management
+      - /lib/modules:/lib/modules:ro
+    restart: unless-stopped
+    devices:
+      - /dev/net/tun:/dev/net/tun

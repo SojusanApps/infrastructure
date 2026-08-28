@@ -1,0 +1,31 @@
+services:
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: sojusan-apps-nginx
+    restart: unless-stopped
+    env_file: .env
+    networks:
+      - shared
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/templates:/etc/nginx/templates:ro
+      - /var/www/certbot:/var/www/certbot:ro
+      # live/<domain>/*.pem are symlinks into ../../archive/<domain>/ - mount both as
+      # siblings under the same paths so the relative symlink still resolves, without
+      # exposing the rest of /etc/letsencrypt (account keys, CSRs, renewal configs).
+      - ${NGINX_CERT_DIR}/live:/etc/letsencrypt/live:ro
+      - ${NGINX_CERT_DIR}/archive:/etc/letsencrypt/archive:ro
+    healthcheck:
+      # nginx:alpine ships curl but only busybox sh (no bash), so /dev/tcp is unavailable.
+      # Probe the port-80 redirect, which nginx answers itself without touching an upstream.
+      test: ["CMD", "curl", "-sf", "-o", "/dev/null", "http://127.0.0.1:80/"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+networks:
+  shared:
+    name: sojusan-apps-shared-network
+    external: true

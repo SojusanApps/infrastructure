@@ -17,8 +17,20 @@ The external Docker network (`sojusan-apps-shared-network`) that connects this r
 _Avoid_: App network, public network
 
 **Reverse Proxy**:
-The TLS-terminating proxy running on the same host as this repo's services, forwarding traffic to them over the Shared Network. Lives outside this repo (this repo only assumes its existence); Consuming Apps reach it over the real network via its public hostname, not via Docker.
-_Avoid_: Load balancer, ingress (unless that's literally what's deployed)
+The TLS-terminating nginx service this repo owns and deploys, running on the same host as Keycloak and forwarding to it over the Shared Network. Serves Keycloak's public hostname to everyone, and its separate Admin Console hostname only to clients on the VPN. (An unrelated reverse proxy on a different VPS fronts other, unrelated services — it has no relationship to this repo.)
+_Avoid_: Load balancer, ingress (unless that's literally what's deployed), external proxy
+
+**Admin Console**:
+Keycloak's realm/user administration UI and REST API, served on its own hostname (`KC_HOSTNAME_ADMIN`) that the Reverse Proxy exposes only to clients on the VPN — distinct from the public hostname, which serves login/token/account traffic to everyone.
+_Avoid_: Admin panel, backend, management UI
+
+**Management Console**:
+The Shared Broker's built-in web UI, reachable only over the VPN — bound directly to the VPN's own host address rather than sitting behind the Reverse Proxy, since the Reverse Proxy doesn't proxy RabbitMQ's protocol.
+_Avoid_: RabbitMQ UI, admin console (reserve that for Keycloak's)
+
+**VPN**:
+The WireGuard tunnel (wg-easy, deployed in `wg-easy/`) that lets trusted operators reach VPN-only surfaces — the Admin Console and the Management Console — on this host. This repo assumes it exists and consumes its client subnet (`10.8.0.0/24`) to gate access; it doesn't own wg-easy's own lifecycle or configuration.
+_Avoid_: Private network, tunnel, VPN network
 
 **Bootstrap Admin**:
 The Keycloak admin account credentials used only to create the first admin user on a fresh database. Irrelevant once a persistent admin exists in the realm.

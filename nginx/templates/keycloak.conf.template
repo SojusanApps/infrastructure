@@ -1,0 +1,74 @@
+# Substituted by the official nginx image's envsubst-on-templates entrypoint step -
+# values come from NGINX_AUTH_HOSTNAME / NGINX_ADMIN_HOSTNAME / NGINX_VPN_CLIENT_SUBNET
+# in .env. $host / $scheme / $request_uri / $proxy_add_x_forwarded_for below are nginx's
+# own runtime variables, left untouched since they aren't set as container env vars.
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name ${NGINX_AUTH_HOSTNAME} ${NGINX_ADMIN_HOSTNAME};
+
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+    }
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+# Public hostname: auth/token/realm/account traffic, reachable by everyone.
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name ${NGINX_AUTH_HOSTNAME};
+
+    ssl_certificate     /etc/letsencrypt/live/${NGINX_CERT_DOMAIN}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/${NGINX_CERT_DOMAIN}/privkey.pem;
+
+    # Keycloak only uses KC_HOSTNAME_ADMIN to generate URLs - it does not refuse
+    # /admin based on which hostname the request arrived on, so this has to be
+    # enforced here (see docs/adr/0006-tls-terminated-by-in-repo-reverse-proxy.md).
+    location /admin {
+        return 404;
+    }
+
+    location / {
+        # Docker's embedded DNS (127.0.0.11), with the upstream in a variable, resolves
+        # "keycloak" per-request instead of once at config-load time - a static
+        # proxy_pass hostname makes nginx refuse to start at all if keycloak's container
+        # isn't up yet, and stays stale across keycloak container recreates.
+        resolver 127.0.0.11 valid=30s;
+        set $upstream_keycloak keycloak:8080;
+        proxy_pass http://$upstream_keycloak;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $host;
+    }
+}
+
+# Admin Console hostname: reachable only from the VPN client subnet (see CONTEXT.md).
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name ${NGINX_ADMIN_HOSTNAME};
+
+    allow ${NGINX_VPN_CLIENT_SUBNET};
+    deny all;
+
+    ssl_certificate     /etc/letsencrypt/live/${NGINX_CERT_DOMAIN}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/${NGINX_CERT_DOMAIN}/privkey.pem;
+
+    location / {
+        resolver 127.0.0.11 valid=30s;
+        set $upstream_keycloak keycloak:8080;
+        proxy_pass http://$upstream_keycloak;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $host;
+    }
+}
